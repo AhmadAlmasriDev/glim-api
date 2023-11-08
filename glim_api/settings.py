@@ -34,7 +34,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-ahmadalmasridev-glimapi-jznun0hb2wn.ws-eu105.gitpod.io']
+ALLOWED_HOSTS = ['8000-ahmadalmasridev-glimapi-jznun0hb2wn.ws-eu106.gitpod.io']
 
 
 # Application definition
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'rest_framework',
 
     'profiles',
 ]
