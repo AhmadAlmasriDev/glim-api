@@ -10,8 +10,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 class Movie(models.Model):
     Title = models.CharField(max_length=255, blank=False)
-
-    manager = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    manager = models.CharField(max_length=255, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     rated = models.IntegerField(choices=RATING)
