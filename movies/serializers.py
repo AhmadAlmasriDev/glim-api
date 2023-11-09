@@ -17,7 +17,7 @@ class MovieSerializer(serializers.ModelSerializer):
             "id",
             "title",
             "manager",
-            "manager_name"
+            "manager_name",
             "created_at",
             "updated_at",
             "rated",
@@ -31,5 +31,4 @@ class MovieSerializer(serializers.ModelSerializer):
             "price",
             "status",
             "is_admin",
-           
         ]
