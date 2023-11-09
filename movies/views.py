@@ -14,7 +14,6 @@ class MovieList(APIView):
         return Response(serilalizer.data)
 
 
-
 class MovieDetail(APIView):
     serializer_class = MovieSerializer
     permission_classes = [IsAdminUser]

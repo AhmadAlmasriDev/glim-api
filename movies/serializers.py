@@ -3,8 +3,8 @@ from .models import Movie
 
 
 class MovieSerializer(serializers.ModelSerializer):
-    manager = serializers.ReadOnlyField(source="owner.username")
-    manager_name = serializers.ReadOnlyField(source="manager_name")
+    manager = serializers.ReadOnlyField(source="manager.username")
+    manager_name = serializers.ReadOnlyField()
     is_admin = serializers.SerializerMethodField()
 
     def get_is_admin(self, obj):
