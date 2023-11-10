@@ -11,9 +11,7 @@ class Profile(models.Model):
     name = models.CharField(max_length=255, blank=False)
     email = models.CharField(max_length=255, blank=True)
     about = models.TextField(blank=True)
-    avatar = models.ImageField(
-        upload_to='images/', default='../default_profile_br7153'
-    )
+    avatar = CloudinaryField()
 
     class Meta:
         ordering = ['-created_at']
