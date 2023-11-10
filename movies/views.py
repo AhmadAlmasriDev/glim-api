@@ -7,9 +7,10 @@ from .models import Movie
 from .serializers import MovieSerializer
 from glim_api.permissions import ReadOnly
 
+
 class MovieList(APIView):
     serializer_class = MovieSerializer
-    permission_classes = [IsAdminUser|ReadOnly]
+    permission_classes = [IsAdminUser | ReadOnly]
 
     def get(self, request):
         movies = Movie.objects.all()
@@ -50,3 +51,8 @@ class MovieDetail(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        movie = self.get_object(pk)
+        movie.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

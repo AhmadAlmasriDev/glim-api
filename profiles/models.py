@@ -11,10 +11,10 @@ class Profile(models.Model):
     name = models.CharField(max_length=255, blank=False)
     email = models.CharField(max_length=255, blank=True)
     about = models.TextField(blank=True)
-    avatar = CloudinaryField()
+    avatar = models.ImageField(upload_to="images/", default="../default_profile_br7153")
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ["-created_at"]
 
     def __str__(self):
         return f"{self.owner}'s profile"

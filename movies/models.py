@@ -20,7 +20,7 @@ class Movie(models.Model):
     genre = models.CharField(max_length=255, blank=True)
     distribution = models.CharField(max_length=255, blank=True)
     actors = models.CharField(max_length=255, blank=True)
-    poster = CloudinaryField()
+    poster = models.ImageField(upload_to="images/", default="../default_post_jneohh")
     discreption = models.TextField(blank=True)
     price = models.IntegerField()
     status = models.IntegerField(choices=STATUS, default=0)
