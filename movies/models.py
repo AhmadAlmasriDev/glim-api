@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from cloudinary.models import CloudinaryField
 
 
 RATING = ((0, "G"), (1, "PG"), (2, "PG-13"), (3, "NC-17"), (3, "R"))
@@ -14,6 +13,8 @@ class Movie(models.Model):
     manager_name = models.CharField(max_length=255, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
+    start_date = models.DateTimeField(blank=True)
+    end_date = models.DateTimeField(blank=True)
     rated = models.IntegerField(choices=RATING)
     year = models.IntegerField()
     director = models.CharField(max_length=255, blank=True)
