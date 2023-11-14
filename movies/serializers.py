@@ -10,6 +10,8 @@ class MovieSerializer(serializers.ModelSerializer):
     like_id = serializers.SerializerMethodField()
     start_date = serializers.DateTimeField(format="%Y-%m")
     end_date = serializers.DateTimeField(format="%Y-%m")
+    likes_count = serializers.ReadOnlyField()
+    comments_count = serializers.ReadOnlyField()
 
     def validate_poster(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -56,4 +58,6 @@ class MovieSerializer(serializers.ModelSerializer):
             "status",
             "is_admin",
             "like_id",
+            "likes_count",
+            "comments_count",
         ]

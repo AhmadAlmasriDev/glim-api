@@ -10,13 +10,11 @@ SEAT_PER_ROW = 12
 class TicketSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
     show_date = serializers.DateTimeField(format="%Y-%m")
-
     is_owner = serializers.SerializerMethodField()
     seat_row = serializers.SerializerMethodField()
     seat_number = serializers.SerializerMethodField()
     seat_type = serializers.SerializerMethodField()
     price = serializers.SerializerMethodField()
-
     profile_id = serializers.ReadOnlyField(source="owner.profile.id")
     profile_image = serializers.ReadOnlyField(source="owner.profile.image.url")
 
