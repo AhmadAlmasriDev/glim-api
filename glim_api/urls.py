@@ -8,5 +8,6 @@ urlpatterns = [
     path('', include('movies.urls')),
     path('', include('comments.urls')),
     path('', include('likes.urls')),
+    path('', include('tickets.urls')),
 
 ]
