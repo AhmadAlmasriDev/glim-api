@@ -10,15 +10,13 @@ class MovieList(generics.ListCreateAPIView):
     serializer_class = MovieSerializer
     permission_classes = [IsAdminUser | ReadOnly]
     queryset = Movie.objects.annotate(
-        likes_count= Count('likes', distinct=True),
-        comments_count= Count('comments', distinct=True),
-    ).order_by('-created_at')
-    filter_backends = [
-        filters.OrderingFilter
-    ]
+        likes_count=Count("likes", distinct=True),
+        comments_count=Count("comments", distinct=True),
+    ).order_by("-created_at")
+    filter_backends = [filters.OrderingFilter]
     OrderingFilter = [
-        'likes_count',
-        'comments_count',
+        "likes_count",
+        "comments_count",
     ]
 
     def perform_create(self, serializer):

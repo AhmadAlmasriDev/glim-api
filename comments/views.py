@@ -1,4 +1,5 @@
 from rest_framework import generics
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from glim_api.permissions import IsOwnerOrReadOnly
 from .models import Comment
@@ -9,6 +10,12 @@ class CommentList(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = Comment.objects.all()
+    filter_backends = [
+        DjangoFilterBackend
+    ]
+    filterset_fields =[
+        'movie'
+    ]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user, owner_name=self.request.user.username)
