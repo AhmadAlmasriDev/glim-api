@@ -2,12 +2,14 @@ from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from glim_api.permissions import IsOwnerOrReadOnly
+from glim_api.pagination import CommentsPagination
 from .models import Comment
 from .serializers import CommentSerializer, CommentDetailSerializer
 
 
 class CommentList(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
+    pagination_class = CommentsPagination
     permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = Comment.objects.all()
     filter_backends = [
