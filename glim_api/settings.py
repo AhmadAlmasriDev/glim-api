@@ -58,7 +58,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['8000-ahmadalmasridev-glimapi-jznun0hb2wn.ws-eu106.gitpod.io', 'glim.herokuapp.com']
+ALLOWED_HOSTS = ['8000-ahmadalmasridev-glimapi-jznun0hb2wn.ws-eu106.gitpod.io', 'glim-bc4aca443d4b.herokuapp.com']
 
 
 # Application definition
