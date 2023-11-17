@@ -4,7 +4,7 @@ from glim_api.permissions import IsOwnerOrReadOnly
 from .serializers import ProfileSerializer
 
 
-class ProfileList(generics.ListCreateAPIView):
+class ProfileList(generics.ListAPIView):
     serializer_class = ProfileSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Profile.objects.all()
