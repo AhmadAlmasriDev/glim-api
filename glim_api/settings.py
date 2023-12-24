@@ -193,7 +193,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [Path.joinpath(BASE_DIR, 'static'), ]
-STATIC_ROOT = Path.joinpath(BASE_DIR, 'static')
+STATIC_ROOT = Path.joinpath(BASE_DIR, 'staticfiles')
 
 
 
