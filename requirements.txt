@@ -3,9 +3,9 @@ black==23.10.1
 click==8.1.7
 cloudinary==1.36.0
 dj-database-url==0.5.0
-dj-rest-auth==2.1.9
+dj-rest-auth==5.0.2
 Django==3.2.23
-django-allauth==0.54.0
+django-allauth==0.59.0
 django-cloudinary-storage==0.3.0
 django-cors-headers==4.3.1
 django-filter==23.3
