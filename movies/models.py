@@ -9,6 +9,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 class Movie(models.Model):
     title = models.CharField(max_length=255, blank=False)
+    trailer = models.CharField(max_length=255, blank=True)
     manager = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=4)
     manager_name = models.CharField(max_length=255, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)

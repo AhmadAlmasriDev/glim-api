@@ -40,6 +40,7 @@ class MovieSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "title",
+            "trailer",
             "manager",
             "manager_name",
             "created_at",
