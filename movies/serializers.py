@@ -47,6 +47,7 @@ class MovieSerializer(serializers.ModelSerializer):
             "updated_at",
             "start_date",
             "end_date",
+            "session_time",
             "rated",
             "year",
             "director",

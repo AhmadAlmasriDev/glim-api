@@ -13,4 +13,4 @@ class Like(models.Model):
         unique_together = [["movie", "owner"]]
 
     def __str__(self):
-        return f"Movie: {self.movie} Liked by: {self.owner_name}"
+        return f"Movie: {self.movie} Liked by: {self.owner}"
