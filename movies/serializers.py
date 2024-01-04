@@ -8,8 +8,8 @@ class MovieSerializer(serializers.ModelSerializer):
     manager_name = serializers.ReadOnlyField()
     is_admin = serializers.SerializerMethodField()
     like_id = serializers.SerializerMethodField()
-    start_date = serializers.DateField(format="'%d/%m/%Y'")
-    end_date = serializers.DateField(format="'%d/%m/%Y'")
+    start_date = serializers.DateField(format="%m/%d/%Y")
+    end_date = serializers.DateField(format="%m/%d/%Y")
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
 
