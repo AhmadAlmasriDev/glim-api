@@ -28,4 +28,7 @@ class MovieList(generics.ListCreateAPIView):
 class MovieDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = MovieSerializer
     permission_classes = [IsAdminUser | ReadOnly]
-    queryset = Movie.objects.all()
+    queryset = Movie.objects.annotate(
+        likes_count=Count("likes", distinct=True),
+        comments_count=Count("comments", distinct=True),
+    ).order_by("-created_at")
