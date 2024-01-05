@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date 
 
 
 
@@ -11,14 +12,14 @@ class Movie(models.Model):
     title = models.CharField(max_length=255, blank=False)
     trailer = models.CharField(max_length=255, blank=True)
     manager = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=4)
-    manager_name = models.CharField(max_length=255, blank=False)
+    manager_name = models.CharField(max_length=255,)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
-    start_date = models.DateField(blank=True)
-    end_date = models.DateField(blank=True)
-    session_time = models.TimeField(blank=True)
-    rated = models.IntegerField(choices=RATING)
-    year = models.IntegerField()
+    start_date = models.DateField()
+    end_date = models.DateField()
+    session_time = models.TimeField()
+    rated = models.IntegerField(choices=RATING,  default=0)
+    year = models.IntegerField(default = int(date.today().year) )
     director = models.CharField(max_length=255, blank=True)
     genre = models.CharField(max_length=255, blank=True)
     distribution = models.CharField(max_length=255, blank=True)
