@@ -1,12 +1,15 @@
 from rest_framework import serializers
 from .models import Movie
 from likes.models import Like
+from movies.models import RATING
 
+RATING = ((0, "G"), (1, "PG"), (2, "PG-13"), (3, "NC-17"), (3, "R"))
 
 class MovieSerializer(serializers.ModelSerializer):
     manager = serializers.ReadOnlyField(source="manager.username")
     manager_name = serializers.ReadOnlyField()
     is_admin = serializers.SerializerMethodField()
+    
     like_id = serializers.SerializerMethodField()
     start_date = serializers.DateField(format="%m/%d/%Y")
     end_date = serializers.DateField(format="%m/%d/%Y")
@@ -25,6 +28,8 @@ class MovieSerializer(serializers.ModelSerializer):
     def get_is_admin(self, obj):
         request = self.context["request"]
         return request.user.is_staff
+
+
 
     def get_like_id(self, obj):
         user = self.context["request"].user
