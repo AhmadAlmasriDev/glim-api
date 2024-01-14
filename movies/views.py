@@ -4,6 +4,7 @@ from rest_framework.permissions import IsAdminUser
 from glim_api.permissions import ReadOnly
 from .models import Movie
 from .serializers import MovieSerializer
+from .serializers import MovieServiceSerializer
 
 
 class MovieList(generics.ListCreateAPIView):
@@ -23,6 +24,21 @@ class MovieList(generics.ListCreateAPIView):
         serializer.save(
             manager=self.request.user, manager_name=self.request.user.username
         )
+
+
+# class MovieServiceDetail(generics.RetrieveAPIView):
+#     serializer_class = MovieServiceSerializer
+#     permission_classes = [IsAdminUser | ReadOnly]
+#     queryset = Movie.objects.all()
+    
+
+class MovieServiceList(generics.ListCreateAPIView):
+    serializer_class = MovieServiceSerializer
+    permission_classes = [IsAdminUser | ReadOnly]
+    first_object = Movie.objects.all().first()
+    queryset = [first_object]
+    
+    
 
 
 class MovieDetail(generics.RetrieveUpdateDestroyAPIView):
