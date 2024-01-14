@@ -11,6 +11,7 @@ class TicketSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
     show_date = serializers.DateTimeField(format="%Y-%m")
     is_owner = serializers.SerializerMethodField()
+    
     seat_row = serializers.SerializerMethodField()
     seat_number = serializers.SerializerMethodField()
     seat_type = serializers.SerializerMethodField()
@@ -21,6 +22,8 @@ class TicketSerializer(serializers.ModelSerializer):
     def get_is_owner(self, obj):
         request = self.context["request"]
         return request.user == obj.owner
+
+    
 
     def get_seat_row(self, obj):
         row = ROWS[-(obj.seat // -SEAT_PER_ROW) - 1]
