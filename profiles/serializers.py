@@ -5,6 +5,7 @@ from .models import Profile
 class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
     is_owner = serializers.SerializerMethodField()
+    is_admin = serializers.SerializerMethodField()
 
     def validate_avatar(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -19,6 +20,10 @@ class ProfileSerializer(serializers.ModelSerializer):
         request = self.context["request"]
         return request.user == obj.owner
 
+    def get_is_admin(self, obj):
+        request = self.context["request"]
+        return request.user.is_staff
+
     class Meta:
         model = Profile
         fields = [
@@ -31,4 +36,5 @@ class ProfileSerializer(serializers.ModelSerializer):
             "about",
             "avatar",
             "is_owner",
+            "is_admin",
         ]

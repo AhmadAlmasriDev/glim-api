@@ -32,4 +32,4 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class CommentDetailSerializer(CommentSerializer):
-    movie = serializers.ReadOnlyField(source="post.id")
+    movie = serializers.ReadOnlyField(source="movie.id")
