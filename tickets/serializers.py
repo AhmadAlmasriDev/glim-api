@@ -35,3 +35,6 @@ class TicketSerializer(serializers.ModelSerializer):
             "profile_id",
             "profile_image",
         ]
+
+class TicketDetailSerializer(TicketSerializer):
+    movie = serializers.ReadOnlyField(source="movie.id")
