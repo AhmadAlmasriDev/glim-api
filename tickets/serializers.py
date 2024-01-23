@@ -29,6 +29,7 @@ class TicketSerializer(serializers.ModelSerializer):
             "created_at",
             "show_date",
             "reserve",
+            "purchased",
             "is_owner",
             "price",
             "profile_id",

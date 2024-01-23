@@ -12,6 +12,7 @@ class Ticket(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     show_date = models.DateTimeField()
     reserve = models.BooleanField(default=False)
+    purchased = models.BooleanField(default=False)
 
     class Meta:
         ordering = ["-created_at"]
