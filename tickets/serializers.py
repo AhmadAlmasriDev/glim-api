@@ -5,7 +5,7 @@ from movies.models import Movie
 
 class TicketSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
-    show_date = serializers.DateTimeField(format="%m/%d/%Y")
+    show_date = serializers.DateField(format="%m/%d/%Y")
     is_owner = serializers.SerializerMethodField()
     price = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source="owner.profile.id")
@@ -38,3 +38,4 @@ class TicketSerializer(serializers.ModelSerializer):
 
 class TicketDetailSerializer(TicketSerializer):
     movie = serializers.ReadOnlyField(source="movie.id")
+    show_date = serializers.ReadOnlyField(source="show_date")

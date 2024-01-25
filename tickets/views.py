@@ -14,7 +14,9 @@ class TicketList(generics.ListCreateAPIView):
         DjangoFilterBackend
     ]
     filterset_fields =[
-        'movie'
+        'movie',
+        'show_date'
+        
     ]
 
     def perform_create(self, serializer):
