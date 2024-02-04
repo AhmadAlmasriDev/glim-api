@@ -15,7 +15,8 @@ class TicketList(generics.ListCreateAPIView):
     ]
     filterset_fields =[
         'movie',
-        'show_date'
+        'show_date',
+        'owner',
         
     ]
 

@@ -39,3 +39,4 @@ class TicketSerializer(serializers.ModelSerializer):
 class TicketDetailSerializer(TicketSerializer):
     movie = serializers.ReadOnlyField(source="movie.id")
     show_date = serializers.ReadOnlyField(source="show_date")
+    owner = serializers.ReadOnlyField(source="owner")
