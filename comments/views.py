@@ -16,7 +16,8 @@ class CommentList(generics.ListCreateAPIView):
         DjangoFilterBackend
     ]
     filterset_fields =[
-        'movie'
+        'movie',
+        'owner',
     ]
 
     def perform_create(self, serializer):
