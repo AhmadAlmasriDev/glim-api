@@ -10,10 +10,10 @@ class ProfileSerializer(serializers.ModelSerializer):
     def validate_avatar(self, value):
         if value.size > 2 * 1024 * 1024:
             raise serializers.ValidationError("Image size larger than 2MB!")
-        if value.image.height > 1500:
-            raise serializers.ValidationError("Image height larger than 1500px!")
-        if value.image.width > 1500:
-            raise serializers.ValidationError("Image width larger than 1500px!")
+        if value.image.height > 500:
+            raise serializers.ValidationError("Image height larger than 500px!")
+        if value.image.width > 500:
+            raise serializers.ValidationError("Image width larger than 500px!")
         return value
 
     def get_is_owner(self, obj):
