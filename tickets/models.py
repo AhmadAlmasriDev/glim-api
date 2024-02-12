@@ -23,13 +23,13 @@ class Ticket(models.Model):
     def __str__(self):
         return f"{self.owner} movie: {self.movie} at: {self.show_date}"
     
-    # @property
-    # def deletes_in_ten_seconds(self):
-    #     time = self.created_at + timedelta(seconds=10)
-    #     query = Ticket.objects.get(pk=self.pk)
-        
-        
-    #     while True:
-    #        if time > now():
-    #           query.delete()
-    #           break
+
+# def deletes_in_ten_seconds(self):
+#     time = self.created_at + timedelta(seconds=10)
+#     query = Ticket.objects.get(pk=self.pk)
+    
+    
+#     while True:
+#         if time > now():
+#             query.delete()
+#             break
