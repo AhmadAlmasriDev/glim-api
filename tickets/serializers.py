@@ -14,19 +14,19 @@ class TicketSerializer(serializers.ModelSerializer):
     price = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source="owner.profile.id")
     profile_image = serializers.ReadOnlyField(source="owner.profile.avatar.url")
-    # expired = serializers.SerializerMethodField()
+    expired = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
         request = self.context["request"]
         return request.user == obj.owner
 
-    # def get_expired(self, obj):
-    #     ticket_time = obj.created_at + timedelta(seconds=30)
-    #     current_time = timezone.now()
-    #     if ticket_time > current_time: 
-    #         return False
-    #     else:
-    #         return True
+    def get_expired(self, obj):
+        ticket_time = obj.created_at + timedelta(seconds=30)
+        current_time = timezone.now()
+        if ticket_time > current_time: 
+            return False
+        else:
+            return True
         
         
     
@@ -49,7 +49,7 @@ class TicketSerializer(serializers.ModelSerializer):
             "price",
             "profile_id",
             "profile_image",
-            # "expired",
+            "expired",
         ]
 
 class TicketDetailSerializer(TicketSerializer):
