@@ -1,7 +1,7 @@
 from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from glim_api.permissions import IsOwnerOrReadOnly
+from glim_api.permissions import IsOwnerOrReadOnly, IsOwnerOrReadOnlyOrExpired
 from .models import Ticket
 from .serializers import TicketSerializer, TicketDetailSerializer
 
@@ -28,6 +28,6 @@ class TicketList(generics.ListCreateAPIView):
 
 class TicketDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TicketSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsOwnerOrReadOnlyOrExpired]
     # permission_classes = [IsOwnerOrReadOnly]
     queryset = Ticket.objects.all()
