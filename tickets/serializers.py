@@ -2,6 +2,10 @@ from rest_framework import serializers
 from .models import Ticket
 from movies.models import Movie
 
+from datetime import timedelta
+from django.utils import timezone
+
+
 
 class TicketSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
@@ -10,10 +14,21 @@ class TicketSerializer(serializers.ModelSerializer):
     price = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source="owner.profile.id")
     profile_image = serializers.ReadOnlyField(source="owner.profile.avatar.url")
+    expired = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
         request = self.context["request"]
         return request.user == obj.owner
+
+    def get_expired(self, obj):
+        ticket_time = obj.created_at + timedelta(seconds=30)
+        current_time = timezone.now()
+        if ticket_time > current_time: 
+            return False
+        else:
+            return True
+        
+        
     
     def get_price(self, obj):
         price = obj.movie.price
@@ -34,6 +49,7 @@ class TicketSerializer(serializers.ModelSerializer):
             "price",
             "profile_id",
             "profile_image",
+            "expired",
         ]
 
 class TicketDetailSerializer(TicketSerializer):
