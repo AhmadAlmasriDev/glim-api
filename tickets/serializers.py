@@ -21,7 +21,7 @@ class TicketSerializer(serializers.ModelSerializer):
         return request.user == obj.owner
 
     def get_expired(self, obj):
-        ticket_time = obj.created_at + timedelta(seconds=3*60)
+        ticket_time = obj.created_at + timedelta(seconds=30)
         current_time = timezone.now()
         if ticket_time > current_time: 
             return False
