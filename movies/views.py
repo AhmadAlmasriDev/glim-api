@@ -26,19 +26,13 @@ class MovieList(generics.ListCreateAPIView):
         )
 
 
-# class MovieServiceDetail(generics.RetrieveAPIView):
-#     serializer_class = MovieServiceSerializer
-#     permission_classes = [IsAdminUser | ReadOnly]
-#     queryset = Movie.objects.all()
-    
 
 class MovieServiceList(generics.ListCreateAPIView):
     serializer_class = MovieServiceSerializer
     permission_classes = [IsAdminUser | ReadOnly]
     first_object = Movie.objects.all().first()
     queryset = [first_object]
-    
-    
+
 
 
 class MovieDetail(generics.RetrieveUpdateDestroyAPIView):

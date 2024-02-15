@@ -14,7 +14,7 @@ class IsOwnerOrReadOnly(BasePermission):
 class IsOwnerOrReadOnlyOrExpired(BasePermission):
 
     def object_expired(self, obj):
-        ticket_time = obj.created_at + timedelta(seconds=30)
+        ticket_time = obj.created_at + timedelta(seconds=3*60)
         current_time = timezone.now()
         
         return ticket_time < current_time
