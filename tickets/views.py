@@ -17,7 +17,6 @@ class TicketList(generics.ListCreateAPIView):
         'movie',
         'show_date',
         'owner',
-        
     ]
 
     def perform_create(self, serializer):
