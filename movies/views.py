@@ -27,14 +27,16 @@ class MovieList(generics.ListCreateAPIView):
 
 
 """
-The movie service end point is used to provide other info related to movies (Ratings)
+The movie service end point is used to provide
+other info related to movies (Ratings)
 """
+
+
 class MovieServiceList(generics.ListCreateAPIView):
     serializer_class = MovieServiceSerializer
     permission_classes = [IsAdminUser | ReadOnly]
     first_object = Movie.objects.all().first()
     queryset = [first_object]
-
 
 
 class MovieDetail(generics.RetrieveUpdateDestroyAPIView):

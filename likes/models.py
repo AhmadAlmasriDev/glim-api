@@ -4,7 +4,10 @@ from movies.models import Movie
 
 
 class Like(models.Model):
-    movie = models.ForeignKey(Movie, related_name="likes", on_delete=models.CASCADE)
+    movie = models.ForeignKey(
+        Movie,
+        related_name="likes",
+        on_delete=models.CASCADE)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 

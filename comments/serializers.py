@@ -7,7 +7,8 @@ class CommentSerializer(serializers.ModelSerializer):
     owner_name = serializers.ReadOnlyField()
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source="owner.profile.id")
-    profile_avatar = serializers.ReadOnlyField(source="owner.profile.avatar.url")
+    profile_avatar = serializers.ReadOnlyField(
+        source="owner.profile.avatar.url")
     approved = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):

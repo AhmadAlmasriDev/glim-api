@@ -8,7 +8,6 @@ class MovieSerializer(serializers.ModelSerializer):
     manager = serializers.ReadOnlyField(source="manager.username")
     manager_name = serializers.ReadOnlyField()
     is_admin = serializers.SerializerMethodField()
-    
     like_id = serializers.SerializerMethodField()
     start_date = serializers.DateField(format="%m/%d/%Y")
     end_date = serializers.DateField(format="%m/%d/%Y")
@@ -28,13 +27,11 @@ class MovieSerializer(serializers.ModelSerializer):
         request = self.context["request"]
         return request.user.is_staff
 
-   
-
     def get_like_id(self, obj):
         user = self.context["request"].user
         if user.is_authenticated:
             like = Like.objects.filter(
-                owner = user , movie = obj
+                owner=user, movie=obj
             ).first()
             return like.id if like else None
         return None
@@ -66,25 +63,22 @@ class MovieSerializer(serializers.ModelSerializer):
             "like_id",
             "likes_count",
             "comments_count",
-            
         ]
 
 
 class MovieServiceSerializer(serializers.ModelSerializer):
-    
+
     service = serializers.SerializerMethodField()
-    
-    def get_service(self,obj):
-        ratings =[]
+
+    def get_service(self, obj):
+        ratings = []
         for item in RATING:
             ratings.append(item[1])
-        info = {"ratings":ratings}
+        info = {"ratings": ratings}
         return info
 
     class Meta:
         model = Movie
         fields = [
-            
             "service",
         ]
-

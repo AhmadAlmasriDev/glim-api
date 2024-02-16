@@ -5,7 +5,9 @@ from cloudinary.models import CloudinaryField
 
 
 class Comment(models.Model):
-    movie = models.ForeignKey(Movie, related_name='comments', on_delete=models.CASCADE)
+    movie = models.ForeignKey(
+        Movie, related_name='comments',
+        on_delete=models.CASCADE)
     owner = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=4)
     owner_name = models.CharField(max_length=255, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)

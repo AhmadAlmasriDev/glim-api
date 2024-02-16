@@ -13,7 +13,7 @@ class TicketList(generics.ListCreateAPIView):
     filter_backends = [
         DjangoFilterBackend
     ]
-    filterset_fields =[
+    filterset_fields = [
         'movie',
         'show_date',
         'owner',
@@ -21,7 +21,6 @@ class TicketList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
-
 
 
 class TicketDetail(generics.RetrieveUpdateDestroyAPIView):

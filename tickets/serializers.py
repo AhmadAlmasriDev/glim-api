@@ -6,14 +6,15 @@ from datetime import timedelta
 from django.utils import timezone
 
 
-
 class TicketSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
     show_date = serializers.DateField(format="%m/%d/%Y")
     is_owner = serializers.SerializerMethodField()
     price = serializers.SerializerMethodField()
-    profile_id = serializers.ReadOnlyField(source="owner.profile.id")
-    profile_image = serializers.ReadOnlyField(source="owner.profile.avatar.url")
+    profile_id = serializers.ReadOnlyField(
+        source="owner.profile.id")
+    profile_image = serializers.ReadOnlyField(
+        source="owner.profile.avatar.url")
     expired = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
@@ -23,13 +24,11 @@ class TicketSerializer(serializers.ModelSerializer):
     def get_expired(self, obj):
         ticket_time = obj.created_at + timedelta(seconds=3*60)
         current_time = timezone.now()
-        if ticket_time > current_time: 
+        if ticket_time > current_time:
             return False
         else:
             return True
-        
-        
-    
+
     def get_price(self, obj):
         price = obj.movie.price
         return price
@@ -52,7 +51,9 @@ class TicketSerializer(serializers.ModelSerializer):
             "expired",
         ]
 
+
 class TicketDetailSerializer(TicketSerializer):
     movie = serializers.ReadOnlyField(source="movie.id")
     show_date = serializers.ReadOnlyField(source="show_date")
     owner = serializers.ReadOnlyField(source="owner")
+    
