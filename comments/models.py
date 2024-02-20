@@ -3,12 +3,13 @@ from django.contrib.auth.models import User
 from movies.models import Movie
 from cloudinary.models import CloudinaryField
 
+DEFAULT_DELETED_PROFILE = 9
 
 class Comment(models.Model):
     movie = models.ForeignKey(
         Movie, related_name='comments',
         on_delete=models.CASCADE)
-    owner = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=4)
+    owner = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=DEFAULT_DELETED_PROFILE)
     owner_name = models.CharField(max_length=255, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
