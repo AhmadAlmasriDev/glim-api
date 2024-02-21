@@ -34,4 +34,4 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class CommentDetailSerializer(CommentSerializer):
     movie = serializers.ReadOnlyField(source="movie.id")
-    owner = serializers.ReadOnlyField(source="owner")
+    owner = serializers.ReadOnlyField(source="owner.id")
