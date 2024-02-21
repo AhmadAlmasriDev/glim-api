@@ -32,7 +32,7 @@ other info related to movies (Ratings)
 """
 
 
-class MovieServiceList(generics.ListCreateAPIView):
+class MovieServiceList(generics.ListAPIView):
     serializer_class = MovieServiceSerializer
     permission_classes = [IsAdminUser | ReadOnly]
     first_object = Movie.objects.all().first()
