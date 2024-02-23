@@ -58,7 +58,7 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEV' in os.environ
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '8000-ahmadalmasridev-glimapi-iflh0pg4e89.ws-eu108.gitpod.io',
@@ -144,6 +144,7 @@ WSGI_APPLICATION = 'glim_api.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
 
 if 'DEV' in os.environ:
     DATABASES = {
